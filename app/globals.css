@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #070d1f;
+  --foreground: #e8f0fe;
+  --primary-blue: #1a73e8;
+  --accent-cyan: #00d4ff;
+  --accent-blue: #2196f3;
+  --glow-blue: rgba(0, 212, 255, 0.3);
+  --panel-bg: rgba(10, 25, 60, 0.6);
+  --border-color: rgba(0, 180, 255, 0.3);
+  --text-dim: #8ba3c7;
+  --text-highlight: #00e0ff;
+  --digit-font: 'Montserrat Alternates', sans-serif;
+  --cn-font: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary-blue);
+  --color-accent-cyan: var(--accent-cyan);
+  --color-accent-blue: var(--accent-blue);
+  --color-glow-blue: var(--glow-blue);
+  --color-panel-bg: var(--panel-bg);
+  --color-border-color: var(--border-color);
+  --color-text-dim: var(--text-dim);
+  --color-text-highlight: var(--text-highlight);
+  --font-digit: var(--digit-font);
+  --font-cn: var(--cn-font);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--cn-font);
+}
+
+body {
+  background: radial-gradient(ellipse at center, #0d1b3e 0%, #070d1f 60%, #040914 100%);
+}
+
+/* 数字字体 */
+.digit-font {
+  font-family: var(--digit-font);
+}
