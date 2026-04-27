@@ -5,9 +5,9 @@ import Image from 'next/image';
  */
 export default function FooterBar() {
   return (
-    <footer className="relative w-full z-20" style={{ height: '40px' }}>
+    <footer className="relative w-full" style={{ height: '40px' }}>
       <Image
-        src="/assets/images/底部@2x.png"
+        src="/assets/images/footer.png"
         alt=""
         fill
         className="object-contain"

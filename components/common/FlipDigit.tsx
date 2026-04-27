@@ -28,7 +28,7 @@ export default function FlipDigit({ value }: FlipDigitProps) {
   return (
     <div className="relative w-8 h-10 flex items-center justify-center">
       <Image
-        src="/assets/images/数字背景@2x.png"
+        src="/assets/images/digit-bg.png"
         alt=""
         fill
         className="object-contain"

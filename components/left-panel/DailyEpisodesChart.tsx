@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { getDailyEpisodesMock, type DailyEpisodesData } from '@/lib/mockData';
+import { INITIAL_DAILY_EPISODES, getDailyEpisodesMock, type DailyEpisodesData } from '@/lib/mockData';
 
 const ReactECharts = dynamic(() => import('echarts-for-react'), { ssr: false });
 
@@ -10,9 +10,10 @@ const ReactECharts = dynamic(() => import('echarts-for-react'), { ssr: false });
  * 每日生成集数 — 柱状图（同比上周）
  */
 export default function DailyEpisodesChart() {
-  const [data, setData] = useState<DailyEpisodesData>(getDailyEpisodesMock());
+  const [data, setData] = useState<DailyEpisodesData>(INITIAL_DAILY_EPISODES);
 
   useEffect(() => {
+    setData(getDailyEpisodesMock());
     const timer = setInterval(() => {
       setData(getDailyEpisodesMock());
     }, 3000);
@@ -71,8 +72,7 @@ export default function DailyEpisodesChart() {
   };
 
   return (
-    <section className="relative rounded-lg overflow-hidden flex flex-col"
-      style={{ background: 'rgba(10, 25, 60, 0.6)', border: '1px solid rgba(0, 180, 255, 0.15)' }}>
+    <section className="relative rounded-lg overflow-hidden flex flex-col">
       <div className="px-4 py-2">
         <h3 className="text-sm" style={{ color: '#e8f0fe' }}>每日生成集数（同比上周）</h3>
       </div>

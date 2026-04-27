@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import CumulativeContent from './CumulativeContent';
-import DailyTrends from './DailyTrends';
-import ComputeCost from './ComputeCost';
+import CumulativeContent from "./CumulativeContent";
+import DailyTrends from "./DailyTrends";
+import ComputeCost from "./ComputeCost";
 
 /**
  * 左侧面板容器

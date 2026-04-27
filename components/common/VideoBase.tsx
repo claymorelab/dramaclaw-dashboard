@@ -1,16 +1,19 @@
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 interface VideoBaseProps {
-  videoSrc: string;
+  videorc: string;
   className?: string;
 }
 
 /**
  * 动效底座 — 循环播放 MP4 动效，screen 混合模式滤黑底
  */
-export default function VideoBase({ videoSrc, className = '' }: VideoBaseProps) {
+const DEFAULT_LAYOUT =
+  "absolute top-1/2 left-1/2 w-[110%] h-[110%] -translate-x-1/2 -translate-y-1/2 object-cover pointer-events-none";
+
+export default function VideoBase({ videorc, className }: VideoBaseProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -22,13 +25,17 @@ export default function VideoBase({ videoSrc, className = '' }: VideoBaseProps) 
   return (
     <video
       ref={videoRef}
-      src={videoSrc}
+      src={videorc}
       autoPlay
       loop
       muted
       playsInline
-      className={className}
-      style={{ mixBlendMode: 'screen', width: '100%', height: '100%', objectFit: 'contain' }}
+      style={{
+        mixBlendMode: "screen",
+        filter: "brightness(1.2) contrast(1.2)",
+        pointerEvents: "none",
+      }}
+      className={className ?? DEFAULT_LAYOUT}
     />
   );
 }

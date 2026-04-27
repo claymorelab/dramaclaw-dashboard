@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { getDailyMinutesMock, type DailyMinutesData } from '@/lib/mockData';
+import { INITIAL_DAILY_MINUTES, getDailyMinutesMock, type DailyMinutesData } from '@/lib/mockData';
 
 const ReactECharts = dynamic(() => import('echarts-for-react'), { ssr: false });
 
@@ -10,9 +10,10 @@ const ReactECharts = dynamic(() => import('echarts-for-react'), { ssr: false });
  * 每日生成分钟数 — 面积曲线图
  */
 export default function DailyMinutesChart() {
-  const [data, setData] = useState<DailyMinutesData>(getDailyMinutesMock());
+  const [data, setData] = useState<DailyMinutesData>(INITIAL_DAILY_MINUTES);
 
   useEffect(() => {
+    setData(getDailyMinutesMock());
     const timer = setInterval(() => {
       setData(getDailyMinutesMock());
     }, 3000);
@@ -76,8 +77,7 @@ export default function DailyMinutesChart() {
   };
 
   return (
-    <section className="relative rounded-lg overflow-hidden flex flex-col"
-      style={{ background: 'rgba(10, 25, 60, 0.6)', border: '1px solid rgba(0, 180, 255, 0.15)' }}>
+    <section className="relative rounded-lg overflow-hidden flex flex-col">
       <div className="px-4 py-2">
         <h3 className="text-sm" style={{ color: '#e8f0fe' }}>每日生成分钟数（同比上周）</h3>
       </div>

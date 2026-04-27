@@ -6,9 +6,9 @@ import Image from 'next/image';
  */
 export default function DashboardBorder() {
   return (
-    <div className="absolute inset-0 pointer-events-none z-10">
+    <div className="absolute inset-0 pointer-events-none">
       <Image
-        src="/assets/images/边框@2x.png"
+        src="/assets/images/border.png"
         alt=""
         fill
         className="object-contain"

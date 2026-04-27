@@ -41,4 +41,4 @@ yarn-error.log*
 next-env.d.ts
 
 # large binary assets — host on OSS, fetch at runtime
-/public/assets/videos/
+/public/assets/video/
