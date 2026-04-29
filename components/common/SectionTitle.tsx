@@ -10,10 +10,10 @@ import title5 from "../../public/assets/images/section-title-5.png";
 type SectionTitleType = 1 | 2 | 3 | 4 | 5;
 
 interface SectionTitleProps {
-  /** 小标题编号，对应切图文件 */
-  type: SectionTitleType;
   /** 组件类名 */
   className?: string;
+  /** 标题 */
+  title: string;
 }
 
 const TITLE_MAP: Record<SectionTitleType, StaticImageData> = {
@@ -28,22 +28,25 @@ const TITLE_MAP: Record<SectionTitleType, StaticImageData> = {
  * 区块标题组件 — 使用设计稿切图，按图片原始比例显示
  */
 export default function SectionTitle({
-  type,
   className = "",
+  title,
 }: SectionTitleProps) {
   return (
     <div
       className={`${className} relative w-full overflow-hidden`}
       style={{ aspectRatio: "7 / 1" }}
     >
+      {/* src={TITLE_MAP[type]} */}
       <Image
-        src={TITLE_MAP[type]}
+        src="/assets/images/title-border.png"
         alt=""
         fill
         className="object-cover"
         sizes="480px"
-        priority={type <= 2}
       />
+      <span className="title-font absolute inset-0 flex left-15 bottom-10 items-center text-white text-xl font-bold">
+        <span>{title ? title : "数字资产概览"}</span>
+      </span>
     </div>
   );
 }

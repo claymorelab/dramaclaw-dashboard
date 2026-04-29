@@ -57,18 +57,24 @@ export function getDailyEpisodesMock(): DailyEpisodesData {
 
 export interface DailyMinutesData {
   dates: string[];
-  values: number[];
+  thisWeek: number[];
+  lastWeek: number[];
 }
 
 export const INITIAL_DAILY_MINUTES: DailyMinutesData = {
   dates: ['4.09', '4.10', '4.11', '4.12', '4.13', '4.14', '4.15'],
-  values: [40, 55, 70, 50, 58, 65, 35],
+  thisWeek: [40, 55, 70, 50, 58, 65, 35],
+  lastWeek: [25, 38, 52, 35, 42, 48, 22],
 };
 
 export function getDailyMinutesMock(): DailyMinutesData {
+  const thisWeek = INITIAL_DAILY_MINUTES.thisWeek.map(v => randInt(v - 10, v + 10));
+  // 上周值始终低于本周对应值（差额 5-15 之间）
+  const lastWeek = thisWeek.map(v => Math.max(0, v - randInt(5, 15)));
   return {
     dates: INITIAL_DAILY_MINUTES.dates,
-    values: INITIAL_DAILY_MINUTES.values.map(v => randInt(v - 10, v + 10)),
+    thisWeek,
+    lastWeek,
   };
 }
 
@@ -83,6 +89,28 @@ export const INITIAL_COMPUTE_COST: ComputeCostData = {
   otherPlatformCost: 35,
   tokens: 1500,
 };
+
+
+
+// 数字产能概览
+export interface CumulativeNumberData {
+  images: number;
+  videos: number;
+  dramas: number;
+}
+export const INITIAL_CUMULATIVE_NUMBER: CumulativeNumberData = {
+  images: 9999,
+  videos: 9999,
+  dramas: 9999,
+};
+
+export function getCumulativeNumberMock(): CumulativeNumberData {
+  return {
+    images: randInt(9000, 11000),
+    videos: randInt(9000, 11000),
+    dramas: randInt(9000, 11000),
+  };
+}
 
 export function getComputeCostMock(): ComputeCostData {
   return {
@@ -108,12 +136,14 @@ export interface PlatformPlayData {
   douyin: number;
   kuaishou: number;
   wechat: number;
+  other: number;
 }
 
 export const INITIAL_PLATFORM_PLAY: PlatformPlayData = {
   douyin: 1000,
   kuaishou: 800,
   wechat: 600,
+  other: 300,
 };
 
 export function getPlatformPlayMock(): PlatformPlayData {
@@ -121,6 +151,7 @@ export function getPlatformPlayMock(): PlatformPlayData {
     douyin: randInt(800, 1200),
     kuaishou: randInt(600, 1000),
     wechat: randInt(400, 800),
+    other: randInt(200, 400),
   };
 }
 
@@ -129,13 +160,14 @@ export interface TopDrama {
   title: string;
   plays: string;
   poster?: string;
+  color?: string;
 }
 
 export function getTopDramasMock(): TopDrama[] {
   return [
-    { rank: 1, title: '《给废太子借命》', plays: '10万+播放' },
-    { rank: 2, title: '《嫡姐抢嫁太子》', plays: '5万+播放' },
-    { rank: 3, title: '《冷宫里的残废太子》', plays: '3万+播放' },
+    { rank: 1, title: '《给废太子借命》', plays: '10万+播放', color: '#FFDA92' },
+    { rank: 2, title: '《嫡姐抢嫁太子》', plays: '5万+播放' , color: '#B6BFD3'},
+    { rank: 3, title: '《冷宫里的残废太子》', plays: '3万+播放', color: '#BE915F' },
   ];
 }
 

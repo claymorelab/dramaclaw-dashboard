@@ -1,26 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
-import VideoBase from "@/components/common/VideoBase";
 import { NOTICES } from "@/lib/mockData";
 
 /**
- * 中间区域 - 滚动通知 + 中央主视觉（数据流）
+ * 中间区域 - 跑马灯通知栏 + 中央主视觉
  */
 export default function CenterArea() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % NOTICES.length);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, []);
+  // 复制一份用于无缝循环:轨道滚动到 -50% 时,第二份正好落在起点位置
+  const items = [...NOTICES, ...NOTICES];
 
   return (
-    <div className="relative flex flex-col items-center justify-start pt-8 gap-6 h-full">
-      {/* 滚动通知栏 — 使用切图背景 + 通知图标 */}
+    <div className="relative flex flex-col items-center justify-start pt-8 gap-6 flex-1">
+      {/* 跑马灯通知栏 — 多条数据连续滚动,首尾无缝衔接,条目之间留间距 */}
       <div className="relative w-full max-w-2xl h-10 flex items-center z-10">
         <Image
           src="/assets/images/notice-bar.png"
@@ -28,17 +20,29 @@ export default function CenterArea() {
           fill
           className="object-contain"
         />
-        <div className="absolute inset-0 flex items-center px-8 z-10 gap-2">
-          <Image
-            src="/assets/images/notice.png"
-            alt="通知"
-            width={18}
-            height={18}
-            className="flex-shrink-0"
-          />
-          <p className="text-sm truncate" style={{ color: "#e8f0fe" }}>
-            {NOTICES[currentIndex].text}
-          </p>
+        <div className="absolute inset-0 px-8 overflow-hidden flex items-center leading-none">
+          <div className="marquee-loop inline-flex items-center whitespace-nowrap flex-shrink-0">
+            {items.map((notice, i) => (
+              <div
+                key={i}
+                className="inline-flex items-center gap-2 mr-10 flex-shrink-0"
+              >
+                <Image
+                  src="/assets/images/notice.png"
+                  alt="通知"
+                  width={18}
+                  height={18}
+                  className="flex-shrink-0"
+                />
+                <p
+                  className="text-sm whitespace-nowrap color-override"
+                  style={{ color: "#e8f0fe" }}
+                >
+                  {notice.text}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

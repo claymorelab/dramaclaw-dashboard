@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'DingTalk JinBuTi';
+  src: url('/fonts/DingTalk_JinBuTi_Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #070d1f;
   --foreground: #e8f0fe;
@@ -55,4 +63,50 @@
 /* 数字字体 */
 .digit-font {
   font-family: var(--digit-font);
+}
+
+/* 标题字体 — 钉钉进步体 */
+.title-font {
+  font-family: 'DingTalk JinBuTi', var(--cn-font);
+}
+
+/* 面板内非标题文字统一为 80% 透明度白色 */
+section *:not(.title-font):not(.color-override) {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+/* 数字保持纯白,不带透明度 */
+section .digit-font:not(.color-override) {
+  color: #ffffff !important;
+}
+section .title-font,
+section .title-font * {
+  color: #ffffff !important;
+}
+
+/* 通知栏跑马灯 — 多条数据复制一份后,从 0 滚到 -50%
+   第二份此时正好接到第一份起点的位置,实现首尾无缝循环 */
+@keyframes marquee-loop {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-loop {
+  animation: marquee-loop 30s linear infinite;
+}
+
+/* 数字翻牌 — 翻转层 rotateX 0 → -180,前面旧数字翻走,后面新数字翻入 */
+@keyframes flip-down {
+  from { transform: rotateX(0deg); }
+  to { transform: rotateX(-180deg); }
+}
+.flip-anim {
+  animation: flip-down 500ms cubic-bezier(0.35, 0, 0.65, 1) forwards;
+}
+/* 翻转中点的阴影闪烁 — 0 → 0.5(中点) → 0 */
+@keyframes flip-shadow {
+  0% { background: rgba(0,0,0,0); }
+  50% { background: rgba(0,0,0,0.5); }
+  100% { background: rgba(0,0,0,0); }
+}
+.flip-shadow {
+  animation: flip-shadow 500ms ease-in-out forwards;
 }

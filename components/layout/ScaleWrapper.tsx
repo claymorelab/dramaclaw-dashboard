@@ -49,28 +49,7 @@ export default function ScaleWrapper({
           overflow: "hidden",
         }}
       >
-        <video
-          src="/assets/video/%E8%A7%86%E9%A2%91%E8%83%8C%E6%99%AF.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-        />
-        <img
-          src="/assets/images/bg-warper.png"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-        />
-        <div
-          style={{
-            position: "relative",
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          {children}
-        </div>
+        {children}
       </div>
     </div>
   );
