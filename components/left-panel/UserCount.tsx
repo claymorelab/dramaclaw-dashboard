@@ -7,7 +7,7 @@ import Image from "next/image";
 const INITIAL_VALUES = [3000, 1000];
 const LABELS = ["用户总量", "活跃用户数"];
 const MAX_VALUE = 10000;
-const TICK_MS = 10000;
+const TICK_MS = 5000;
 
 /**
  * 用户数统计 — 每 10s 数字递增,封顶 10000

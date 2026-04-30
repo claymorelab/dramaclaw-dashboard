@@ -23,7 +23,7 @@ export default function NumberPanel() {
     setData(getCumulativeNumberMock());
     const timer = setInterval(() => {
       setData(getCumulativeNumberMock());
-    }, 3000);
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 

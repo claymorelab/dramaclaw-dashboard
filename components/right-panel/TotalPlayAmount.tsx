@@ -30,14 +30,14 @@ export default function TotalPlayAmount() {
     const timer = setInterval(() => {
       setTotal(getTotalPlayMock());
       setPlatform(getPlatformPlayMock());
-    }, 3000);
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setTokens((v) => Math.min(9999, v + 100));
-    }, 10000);
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 

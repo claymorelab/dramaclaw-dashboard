@@ -19,7 +19,7 @@ export default function CumulativeContent() {
     setData(getCumulativeMock());
     const timer = setInterval(() => {
       setData(getCumulativeMock());
-    }, 3000);
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
