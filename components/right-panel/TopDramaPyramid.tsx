@@ -3,7 +3,6 @@
 import Image from "next/image";
 import SectionTitle from "@/components/common/SectionTitle";
 import VideoBase from "@/components/common/VideoBase";
-import { videoUrl } from "@/lib/videoCdn";
 import { getTopDramasMock, type TopDrama } from "@/lib/mockData";
 
 /**
@@ -97,7 +96,7 @@ export default function TopDramaPyramid() {
         {/* 金字塔动效 - 绝对定位靠右,不挤压排名列表 */}
         <div className="absolute right-0 left-35 inset-y-0 my-auto w-106 h-106 pointer-events-none">
           <VideoBase
-            videorc={videoUrl("pyramid.mp4")}
+            videorc="/assets/video/pyramid.mp4"
             className="absolute inset-0 w-full h-full opacity-80"
           />
         </div>

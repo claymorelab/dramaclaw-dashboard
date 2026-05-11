@@ -9,11 +9,10 @@ import LeftPanel from "../left-panel/LeftPanel";
 import RightPanel from "../right-panel/RightPanel";
 import CenterArea from "../center-area/CenterArea";
 import BottomArea from "../bottom-area/Bottomarea";
-import { videoUrl } from "@/lib/videoCdn";
 
 export type DashboardMode = "datascreen" | "dramaclaw";
 
-const BG_VIDEOS = [videoUrl("bg.mp4"), videoUrl("bg2.mp4")];
+const BG_VIDEOS = ["/assets/video/bg.mp4", "/assets/video/bg2.mp4"];
 
 /**
  * 数字驾驶舱主容器 — 固定设计稿 1920×1134，外层 ScaleWrapper 负责等比缩放

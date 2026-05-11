@@ -5,7 +5,6 @@ import SectionTitle from "@/components/common/SectionTitle";
 import FlipDigit from "@/components/common/FlipDigit";
 import VideoBase from "@/components/common/VideoBase";
 import Image from "next/image";
-import { videoUrl } from "@/lib/videoCdn";
 import {
   INITIAL_TOTAL_PLAY,
   INITIAL_PLATFORM_PLAY,
@@ -65,22 +64,22 @@ export default function TotalPlayAmount() {
             {
               name: "抖音",
               value: platform.douyin,
-              video: videoUrl("dylj.mp4"),
+              video: "/assets/video/dylj.mp4",
             },
             {
               name: "快手",
               value: platform.kuaishou,
-              video: videoUrl("kslj.mp4"),
+              video: "/assets/video/kslj.mp4",
             },
             {
               name: "微信剧场",
               value: platform.wechat,
-              video: videoUrl("jclj.mp4"),
+              video: "/assets/video/jclj.mp4",
             },
             {
               name: "其余平台",
               value: platform.other,
-              video: videoUrl("qylj.mp4"),
+              video: "/assets/video/qylj.mp4",
             },
           ].map((item, i) => (
             <div key={i} className="flex flex-col items-center">
