@@ -5,7 +5,7 @@ import VideoBase from "@/components/common/VideoBase";
 import SectionTitle from "@/components/common/SectionTitle";
 import {
   INITIAL_CUMULATIVE,
-  getCumulativeMock,
+  tickCumulative,
   type CumulativeData,
 } from "@/lib/mockData";
 
@@ -16,9 +16,8 @@ export default function CumulativeContent() {
   const [data, setData] = useState<CumulativeData>(INITIAL_CUMULATIVE);
 
   useEffect(() => {
-    setData(getCumulativeMock());
     const timer = setInterval(() => {
-      setData(getCumulativeMock());
+      setData((prev) => tickCumulative(prev));
     }, 5000);
     return () => clearInterval(timer);
   }, []);

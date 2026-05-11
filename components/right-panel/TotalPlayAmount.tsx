@@ -91,6 +91,7 @@ export default function TotalPlayAmount() {
                 style={{ color: "#e8f0fe", fontSize: "32px" }}
               >
                 {item.value}
+                <span style={{ fontSize: "20px", marginLeft: 2 }}>%</span>
               </span>
               <span className="text-xs mt-0.5" style={{ color: "#8ba3c7" }}>
                 {item.name}

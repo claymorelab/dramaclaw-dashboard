@@ -22,16 +22,17 @@ export interface CumulativeData {
 
 /** SSR-safe 初始值（避免 hydration mismatch） */
 export const INITIAL_CUMULATIVE: CumulativeData = {
-  duration: 10000,
-  episodes: 1000,
-  series: 100,
+  duration: 98760,
+  episodes: 49300,
+  series: 1906,
 };
 
-export function getCumulativeMock(): CumulativeData {
+/** 在上一次基础上累加 1-3 随机数 */
+export function tickCumulative(prev: CumulativeData): CumulativeData {
   return {
-    duration: randInt(8000, 12000),
-    episodes: randInt(800, 1200),
-    series: randInt(80, 150),
+    duration: prev.duration + randInt(1, 3),
+    episodes: prev.episodes + randInt(1, 3),
+    series: prev.series + randInt(1, 3),
   };
 }
 
@@ -99,16 +100,19 @@ export interface CumulativeNumberData {
   dramas: number;
 }
 export const INITIAL_CUMULATIVE_NUMBER: CumulativeNumberData = {
-  images: 9999,
-  videos: 9999,
-  dramas: 9999,
+  images: 6400,
+  videos: 300,
+  dramas: 2000,
 };
 
-export function getCumulativeNumberMock(): CumulativeNumberData {
+/** 在上一次基础上累加 1-3 随机数 */
+export function tickCumulativeNumber(
+  prev: CumulativeNumberData,
+): CumulativeNumberData {
   return {
-    images: randInt(9000, 11000),
-    videos: randInt(9000, 11000),
-    dramas: randInt(9000, 11000),
+    images: prev.images + randInt(1, 3),
+    videos: prev.videos + randInt(1, 3),
+    dramas: prev.dramas + randInt(1, 3),
   };
 }
 
@@ -126,33 +130,30 @@ export interface TotalPlayData {
   value: number;
 }
 
-export const INITIAL_TOTAL_PLAY: TotalPlayData = { value: 280000 };
+export const INITIAL_TOTAL_PLAY: TotalPlayData = { value: 94789439 };
 
 export function getTotalPlayMock(): TotalPlayData {
-  return { value: randInt(200000, 350000) };
+  return INITIAL_TOTAL_PLAY;
 }
 
 export interface PlatformPlayData {
+  /** 各平台占全网播放量百分比（求和 = 100） */
   douyin: number;
   kuaishou: number;
   wechat: number;
   other: number;
 }
 
+/** 抖音 > 快手 > 微信剧场 > 其余平台 */
 export const INITIAL_PLATFORM_PLAY: PlatformPlayData = {
-  douyin: 1000,
-  kuaishou: 800,
-  wechat: 600,
-  other: 300,
+  douyin: 56,
+  kuaishou: 27,
+  wechat: 13,
+  other: 4,
 };
 
 export function getPlatformPlayMock(): PlatformPlayData {
-  return {
-    douyin: randInt(800, 1200),
-    kuaishou: randInt(600, 1000),
-    wechat: randInt(400, 800),
-    other: randInt(200, 400),
-  };
+  return INITIAL_PLATFORM_PLAY;
 }
 
 export interface TopDrama {

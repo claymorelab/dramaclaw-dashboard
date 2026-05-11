@@ -7,9 +7,12 @@ import SectionTitle from "@/components/common/SectionTitle";
 import DailyTrends from "./DailyTrends";
 import {
   INITIAL_CUMULATIVE_NUMBER,
-  getCumulativeNumberMock,
+  tickCumulativeNumber,
+  randInt,
   type CumulativeNumberData,
 } from "@/lib/mockData";
+
+const INITIAL_WEEK = { episodes: 3000, minutes: 11300 };
 
 /**
  * 视频算力成本与模型吞吐量
@@ -18,11 +21,15 @@ export default function NumberPanel() {
   const [data, setData] = useState<CumulativeNumberData>(
     INITIAL_CUMULATIVE_NUMBER,
   );
+  const [week, setWeek] = useState(INITIAL_WEEK);
 
   useEffect(() => {
-    setData(getCumulativeNumberMock());
     const timer = setInterval(() => {
-      setData(getCumulativeNumberMock());
+      setData((prev) => tickCumulativeNumber(prev));
+      setWeek((prev) => ({
+        episodes: prev.episodes + randInt(1, 3),
+        minutes: prev.minutes + randInt(1, 3),
+      }));
     }, 5000);
     return () => clearInterval(timer);
   }, []);
@@ -47,11 +54,11 @@ export default function NumberPanel() {
 
   const thisWeek = [
     {
-      value: data.images,
+      value: week.episodes,
       label: "本周总集数",
     },
     {
-      value: data.images,
+      value: week.minutes,
       label: "本周总分钟数",
     },
   ];

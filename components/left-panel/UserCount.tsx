@@ -1,30 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import SectionTitle from "@/components/common/SectionTitle";
 import Image from "next/image";
 
-const INITIAL_VALUES = [3000, 1000];
+const VALUES = [213, 73];
 const LABELS = ["用户总量", "活跃用户数"];
-const MAX_VALUE = 10000;
-const TICK_MS = 5000;
 
 /**
- * 用户数统计 — 每 10s 数字递增,封顶 10000
+ * 用户数统计
  */
 export default function UserCount() {
-  const [values, setValues] = useState<number[]>(INITIAL_VALUES);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setValues((prev) =>
-        prev.map((v) =>
-          Math.min(MAX_VALUE, v + Math.floor(Math.random() * 40) + 10),
-        ),
-      );
-    }, TICK_MS);
-    return () => clearInterval(timer);
-  }, []);
+  const values = VALUES;
 
   return (
     <section className="relative rounded-lg flex flex-col grow ">
