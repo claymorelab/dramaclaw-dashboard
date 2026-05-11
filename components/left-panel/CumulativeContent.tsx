@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import VideoBase from "@/components/common/VideoBase";
 import SectionTitle from "@/components/common/SectionTitle";
+import { videoUrl } from "@/lib/videoCdn";
 import {
   INITIAL_CUMULATIVE,
   tickCumulative,
@@ -24,17 +25,17 @@ export default function CumulativeContent() {
 
   const indicators = [
     {
-      video: "/assets/video/zsc.mp4",
+      video: videoUrl("zsc.mp4"),
       value: data.duration,
       label: "累计生成时长",
     },
     {
-      video: "/assets/video/zbs.mp4",
+      video: videoUrl("zbs.mp4"),
       value: data.episodes,
       label: "累计生成集数",
     },
     {
-      video: "/assets/video/ip.mp4",
+      video: videoUrl("ip.mp4"),
       value: data.series,
       label: "累计生成部数",
     },

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import VideoBase from "@/components/common/VideoBase";
 import SectionTitle from "@/components/common/SectionTitle";
+import { videoUrl } from "@/lib/videoCdn";
 import DailyTrends from "./DailyTrends";
 import {
   INITIAL_CUMULATIVE_NUMBER,
@@ -36,17 +37,17 @@ export default function NumberPanel() {
 
   const indicators = [
     {
-      video: "/assets/video/ljtp.mp4",
+      video: videoUrl("ljtp.mp4"),
       value: data.images,
       label: "今日累计图片数",
     },
     {
-      video: "/assets/video/ljsp.mp4",
+      video: videoUrl("ljsp.mp4"),
       value: data.videos,
       label: "今日累计视频数",
     },
     {
-      video: "/assets/video/ljjj.mp4",
+      video: videoUrl("ljjj.mp4"),
       value: data.dramas,
       label: "今日累计剧集数",
     },

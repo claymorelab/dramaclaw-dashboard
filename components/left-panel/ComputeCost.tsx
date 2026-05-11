@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import VideoBase from "@/components/common/VideoBase";
 import SectionTitle from "@/components/common/SectionTitle";
+import { videoUrl } from "@/lib/videoCdn";
 import {
   INITIAL_COMPUTE_COST,
   getComputeCostMock,
@@ -36,7 +37,7 @@ export default function ComputeCost() {
             {/* 底座动效 + 悬浮文字 */}
             <div className="relative w-20 h-20 transition-transform">
               <VideoBase
-                videorc="/assets/video/dz.mp4"
+                videorc={videoUrl("dz.mp4")}
                 className="absolute top-[65%] left-1/2 w-[110%] h-[110%] -translate-x-1/2 -translate-y-1/2 object-cover"
               />
               {/* 数字 + 单位:悬浮在视频中间 */}

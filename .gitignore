@@ -41,5 +41,4 @@ yarn-error.log*
 next-env.d.ts
 
 # large binary assets — bg videos host on Qiniu, fetch at runtime
-/public/assets/video/bg.mp4
-/public/assets/video/bg2.mp4
+/public/assets/video
