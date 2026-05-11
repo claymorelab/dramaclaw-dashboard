@@ -12,7 +12,10 @@ import BottomArea from "../bottom-area/Bottomarea";
 
 export type DashboardMode = "datascreen" | "dramaclaw";
 
-const BG_VIDEOS = ["/assets/video/bg.mp4", "/assets/video/bg2.mp4"];
+const BG_VIDEOS = [
+  "http://tev59wop7.hn-bkt.clouddn.com/bg.mp4",
+  "http://tev59wop7.hn-bkt.clouddn.com/bg2.mp4",
+];
 
 /**
  * 数字驾驶舱主容器 — 固定设计稿 1920×1134，外层 ScaleWrapper 负责等比缩放

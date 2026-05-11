@@ -40,5 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# large binary assets — host on OSS, fetch at runtime
-/public/assets/video/
+# large binary assets — bg videos host on Qiniu, fetch at runtime
+/public/assets/video/bg.mp4
+/public/assets/video/bg2.mp4
