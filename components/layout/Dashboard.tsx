@@ -12,6 +12,8 @@ import BottomArea from "../bottom-area/Bottomarea";
 
 export type DashboardMode = "datascreen" | "dramaclaw";
 
+const BG_VIDEOS = ["/assets/video/bg.mp4", "/assets/video/bg2.mp4"];
+
 /**
  * 数字驾驶舱主容器 — 固定设计稿 1920×1134，外层 ScaleWrapper 负责等比缩放
  */
@@ -22,6 +24,8 @@ export default function Dashboard() {
   const videoRef = useRef<HTMLVideoElement>(null);
   // 浏览器自动播放策略要求 muted=true 才能 autoplay,所以默认静音
   const [muted, setMuted] = useState(true);
+  const [bgIndex, setBgIndex] = useState(0);
+  const bgSrc = BG_VIDEOS[bgIndex];
 
   const toggleMute = () => {
     const v = videoRef.current;
@@ -41,11 +45,14 @@ export default function Dashboard() {
           <>
             <video
               ref={videoRef}
-              src="/assets/video/bg.mp4"
+              key={bgSrc}
+              src={bgSrc}
               autoPlay
-              loop
-              muted
+              muted={muted}
               playsInline
+              onEnded={() =>
+                setBgIndex((i) => (i + 1) % BG_VIDEOS.length)
+              }
               className="absolute inset-0 w-full h-full object-cover pointer-events-none"
             />
             <img
