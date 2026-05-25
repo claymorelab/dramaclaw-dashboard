@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import VideoBase from "@/components/common/VideoBase";
-import SectionTitle from "@/components/common/SectionTitle";
 import {
   INITIAL_COMPUTE_COST,
   getComputeCostMock,
@@ -25,8 +24,6 @@ export default function ComputeCost() {
 
   return (
     <section className="relative rounded-lg flex flex-col py-2">
-      <SectionTitle title="每分钟算力成本" />
-
       <div className="flex-1 flex gap-4 mt-2">
         {[
           { value: data.dramaClawCost, name: "DramaClaw" },

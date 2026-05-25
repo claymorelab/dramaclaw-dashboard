@@ -5,6 +5,12 @@ import type { CSSProperties } from "react";
 
 interface FlipDigitProps {
   value: string;
+  /** 牌面宽度 px（默认 48） */
+  width?: number;
+  /** 牌面高度 px（默认 56） */
+  height?: number;
+  /** 数字字号 px（默认 40） */
+  fontSize?: number;
 }
 
 const ANIM_DURATION = 500;
@@ -16,18 +22,22 @@ const FACE_BG: CSSProperties = {
   backgroundPosition: "center",
 };
 
-const DIGIT_STYLE: CSSProperties = {
-  color: "#e8f0fe",
-  textShadow: "0 0 8px rgba(0, 224, 255, 0.5)",
-  fontSize: "40px",
-};
-
 /**
  * 单个翻转数字 — 3D 分屏翻牌动画
  * 静态层显示当前数字;翻转层在动画期间叠加,front=旧数字,back=新数字,
  * rotateX 0→-180 + 中点阴影闪烁,合页中线 + 两侧轴点装饰常驻。
  */
-export default function FlipDigit({ value }: FlipDigitProps) {
+export default function FlipDigit({
+  value,
+  width = 48,
+  height = 56,
+  fontSize = 40,
+}: FlipDigitProps) {
+  const digitStyle: CSSProperties = {
+    color: "#e8f0fe",
+    textShadow: "0 0 8px rgba(0, 224, 255, 0.5)",
+    fontSize: `${fontSize}px`,
+  };
   const [display, setDisplay] = useState(value);
   const [flipFrom, setFlipFrom] = useState<string | null>(null);
   const timerRef = useRef<number | null>(null);
@@ -53,15 +63,15 @@ export default function FlipDigit({ value }: FlipDigitProps) {
 
   return (
     <div
-      className="relative w-12 h-14 overflow-hidden rounded-md"
-      style={{ perspective: "400px" }}
+      className="relative overflow-hidden rounded-md"
+      style={{ width, height, perspective: "400px" }}
     >
       {/* 静态层 */}
       <div
         className="absolute inset-0 flex items-center justify-center"
         style={FACE_BG}
       >
-        <span className="digit-font font-bold leading-none" style={DIGIT_STYLE}>
+        <span className="digit-font font-bold leading-none" style={digitStyle}>
           {display}
         </span>
       </div>
@@ -84,7 +94,7 @@ export default function FlipDigit({ value }: FlipDigitProps) {
             >
               <span
                 className="digit-font font-bold leading-none"
-                style={DIGIT_STYLE}
+                style={digitStyle}
               >
                 {flipFrom}
               </span>
@@ -100,7 +110,7 @@ export default function FlipDigit({ value }: FlipDigitProps) {
             >
               <span
                 className="digit-font font-bold leading-none"
-                style={DIGIT_STYLE}
+                style={digitStyle}
               >
                 {value}
               </span>

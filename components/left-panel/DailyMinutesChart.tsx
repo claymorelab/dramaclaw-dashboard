@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import {
   INITIAL_DAILY_MINUTES,
-  getDailyMinutesMock,
+  getWeekDates,
   type DailyMinutesData,
 } from "@/lib/mockData";
 
@@ -16,13 +16,11 @@ const ReactECharts = dynamic(() => import("echarts-for-react"), { ssr: false });
 export default function DailyMinutesChart() {
   const [data, setData] = useState<DailyMinutesData>(INITIAL_DAILY_MINUTES);
 
-  // useEffect(() => {
-  //   setData(getDailyMinutesMock());
-  //   const timer = setInterval(() => {
-  //     setData(getDailyMinutesMock());
-  //   }, 3000);
-  //   return () => clearInterval(timer);
-  // }, []);
+  // 客户端挂载后，将横轴日期替换为以「今天」结尾的最近 7 天
+  // （在 useEffect 中计算，避免 SSR 与客户端时间不一致导致的 hydration 报错）
+  useEffect(() => {
+    setData((prev) => ({ ...prev, dates: getWeekDates() }));
+  }, []);
 
   const maxValue = Math.max(...data.thisWeek);
   const maxIdx = data.thisWeek.indexOf(maxValue);

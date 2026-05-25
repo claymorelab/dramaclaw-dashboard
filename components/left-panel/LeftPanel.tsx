@@ -9,7 +9,7 @@ import UserCount from "./UserCount";
  */
 export default function LeftPanel() {
   return (
-    <div className="flex flex-col gap-3 h-full">
+    <div className="flex flex-col gap-3 h-full justify-between">
       <CumulativeContent />
       <NumberPanel className="-mt-2" />
       <ComputeCost />

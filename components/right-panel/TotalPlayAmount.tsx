@@ -41,7 +41,7 @@ export default function TotalPlayAmount() {
     return () => clearInterval(timer);
   }, []);
 
-  const digits = String(total.value).padStart(8, "0").split("");
+  const digits = String(total.value).padStart(9, "0").split("");
 
   return (
     <section className="relative rounded-lg overflow-hidden flex flex-col">
@@ -49,9 +49,9 @@ export default function TotalPlayAmount() {
 
       <div className="flex flex-col flex-1 px-3 py-2 gap-4">
         {/* 数字翻转牌 */}
-        <div className="flex items-center ml-6 gap-1">
+        <div className="flex items-center ml-2 gap-1">
           {digits.map((d, i) => (
-            <FlipDigit key={i} value={d} />
+            <FlipDigit key={i} value={d} width={40} height={48} fontSize={32} />
           ))}
           <span className="text-sm ml-1" style={{ color: "#8ba3c7" }}>
             次

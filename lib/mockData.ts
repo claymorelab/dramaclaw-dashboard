@@ -68,6 +68,20 @@ export const INITIAL_DAILY_MINUTES: DailyMinutesData = {
   lastWeek: [25, 38, 52, 35, 42, 48, 22],
 };
 
+/**
+ * 生成以「今天」结尾的最近 7 天日期标签（格式 'M.DD'）
+ * 最右边一项对应今天。
+ */
+export function getWeekDates(today: Date = new Date()): string[] {
+  const dates: string[] = [];
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(today);
+    d.setDate(today.getDate() - i);
+    dates.push(`${d.getMonth() + 1}.${String(d.getDate()).padStart(2, '0')}`);
+  }
+  return dates;
+}
+
 export function getDailyMinutesMock(): DailyMinutesData {
   const thisWeek = INITIAL_DAILY_MINUTES.thisWeek.map(v => randInt(v - 10, v + 10));
   // 上周值始终低于本周对应值（差额 5-15 之间）
@@ -130,7 +144,7 @@ export interface TotalPlayData {
   value: number;
 }
 
-export const INITIAL_TOTAL_PLAY: TotalPlayData = { value: 94789439 };
+export const INITIAL_TOTAL_PLAY: TotalPlayData = { value: 194789429 };
 
 export function getTotalPlayMock(): TotalPlayData {
   return INITIAL_TOTAL_PLAY;
@@ -146,9 +160,9 @@ export interface PlatformPlayData {
 
 /** 抖音 > 快手 > 微信剧场 > 其余平台 */
 export const INITIAL_PLATFORM_PLAY: PlatformPlayData = {
-  douyin: 56,
-  kuaishou: 27,
-  wechat: 13,
+  douyin: 64,
+  kuaishou: 23,
+  wechat: 9,
   other: 4,
 };
 
@@ -166,9 +180,9 @@ export interface TopDrama {
 
 export function getTopDramasMock(): TopDrama[] {
   return [
-    { rank: 1, title: '《给废太子借命》', plays: '10万+播放', color: '#FFDA92' },
-    { rank: 2, title: '《嫡姐抢嫁太子》', plays: '5万+播放' , color: '#B6BFD3'},
-    { rank: 3, title: '《冷宫里的残废太子》', plays: '3万+播放', color: '#BE915F' },
+    { rank: 1, title: '《给废太子借命》', plays: '100万+播放', color: '#FFDA92' },
+    { rank: 2, title: '《嫡姐抢嫁太子》', plays: '60万+播放' , color: '#B6BFD3'},
+    { rank: 3, title: '《冷宫里的残废太子》', plays: '40万+播放', color: '#BE915F' },
   ];
 }
 

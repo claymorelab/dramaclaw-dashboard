@@ -15,7 +15,7 @@ export default function UserCount() {
   return (
     <section className="relative rounded-lg flex flex-col grow ">
       <SectionTitle title="用户数统计" />
-      <div className="grid grid-cols-2 gap-4 px-6 pb-3 grow items-center">
+      <div className="grid grid-cols-2 gap-4 pl-2 pr-10 pb-3 grow items-center">
         {values.map((value, i) => (
           <div key={i} className="flex justify-center">
             <div
