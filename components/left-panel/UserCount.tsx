@@ -13,14 +13,14 @@ export default function UserCount() {
   const values = VALUES;
 
   return (
-    <section className="relative rounded-lg flex flex-col grow ">
+    <section className="relative rounded-lg flex flex-col shrink-0">
       <SectionTitle title="用户数统计" />
-      <div className="grid grid-cols-2 gap-4 pl-2 pr-10 pb-3 grow items-center">
+      <div className="grid grid-cols-2 gap-2 pl-2 pr-10 pb-2 items-center">
         {values.map((value, i) => (
           <div key={i} className="flex justify-center">
             <div
               className="relative"
-              style={{ width: "140px", aspectRatio: "197 / 184" }}
+              style={{ width: "112px", aspectRatio: "197 / 184" }}
             >
               <Image
                 src="/assets/images/dz-yh.png"
@@ -29,7 +29,7 @@ export default function UserCount() {
                 className="object-contain"
               />
               {/* 数字 + 标签:悬浮在底座上方 */}
-              <div className="absolute left-18 bottom-8 inset-0 z-10 flex flex-col  justify-center -translate-y-2 pointer-events-none">
+              <div className="absolute left-14 bottom-8 inset-0 z-10 flex flex-col  justify-center -translate-y-2 pointer-events-none">
                 <div
                   className="digit-font font-bold leading-none"
                   style={{ color: "#e8f0fe", fontSize: "32px" }}

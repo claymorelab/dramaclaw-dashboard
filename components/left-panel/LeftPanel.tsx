@@ -1,7 +1,6 @@
 "use client";
 
 import CumulativeContent from "./CumulativeContent";
-import ComputeCost from "./ComputeCost";
 import NumberPanel from "./NumberPanel";
 import UserCount from "./UserCount";
 /**
@@ -9,10 +8,9 @@ import UserCount from "./UserCount";
  */
 export default function LeftPanel() {
   return (
-    <div className="flex flex-col gap-3 h-full justify-between">
+    <div className="flex flex-col gap-3 h-full">
       <CumulativeContent />
-      <NumberPanel className="-mt-2" />
-      <ComputeCost />
+      <NumberPanel />
       <UserCount />
     </div>
   );

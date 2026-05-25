@@ -103,7 +103,7 @@ export default function DailyMinutesChart() {
   };
 
   return (
-    <section className="relative rounded-lg overflow-hidden flex flex-col mt-4">
+    <section className="relative rounded-lg overflow-hidden flex flex-col h-full">
       <div className="px-4 py-2">
         <h3 className="text-sm" style={{ color: "#e8f0fe" }}>
           每日生成分钟数（同比上周）

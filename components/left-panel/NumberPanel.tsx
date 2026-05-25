@@ -64,27 +64,29 @@ export default function NumberPanel() {
   ];
   // /assets/images/dz-bz.png
   return (
-    <section className="relative rounded-lg flex flex-col -mt-2">
+    <section className="relative rounded-lg flex flex-col flex-1 min-h-0 -mt-2">
       <SectionTitle title="数字产能概览" />
+      {/* 内容区：紧贴标题，三块在剩余空间内均匀分布 */}
+      <div className="flex-1 flex flex-col justify-between min-h-0 pt-3 pb-1">
       {/* 今日累计 */}
-      <div className="grid grid-cols-3 gap-2 px-3 pb-3 -mt-3">
+      <div className="grid grid-cols-3 gap-2 px-3">
         {indicators.map((item, i) => (
           <div key={i} className="flex flex-col items-center">
             {/* 动效图标 */}
-            <div className="relative w-14 h-14">
+            <div className="relative w-16 h-16">
               <VideoBase videorc={item.video} />
             </div>
             {/* 数字 */}
             <div
               className="digit-font font-bold leading-none"
-              style={{ color: "#e8f0fe", fontSize: "32px" }}
+              style={{ color: "#e8f0fe", fontSize: "37px" }}
             >
               {item.value}
             </div>
             {/* 标签 */}
             <div
-              className="mt-1"
-              style={{ color: "#8ba3c7", fontSize: "12px" }}
+              className="mt-1.5"
+              style={{ color: "#8ba3c7", fontSize: "13px" }}
             >
               {item.label}
             </div>
@@ -93,7 +95,7 @@ export default function NumberPanel() {
       </div>
 
       {/* 本周数 */}
-      <div className="grid grid-cols-2 gap-3 px-3 pb-3 mt-2">
+      <div className="grid grid-cols-2 gap-3 px-3">
         {thisWeek.map((item, i) => (
           <div key={i} className="flex flex-col items-center gap-1">
             <div
@@ -108,12 +110,12 @@ export default function NumberPanel() {
               />
               <div
                 className="absolute inset-0 bottom-3 flex items-center justify-center digit-font font-bold leading-none"
-                style={{ color: "#e8f0fe", fontSize: "32px" }}
+                style={{ color: "#e8f0fe", fontSize: "37px" }}
               >
                 {item.value}
               </div>
             </div>
-            <div style={{ color: "#8ba3c7", fontSize: "12px" }}>
+            <div style={{ color: "#8ba3c7", fontSize: "13px" }}>
               {item.label}
             </div>
           </div>
@@ -122,6 +124,7 @@ export default function NumberPanel() {
 
       {/* 同比上周 */}
       <DailyTrends />
+      </div>
     </section>
   );
 }

@@ -161,8 +161,8 @@ export interface PlatformPlayData {
 /** 抖音 > 快手 > 微信剧场 > 其余平台 */
 export const INITIAL_PLATFORM_PLAY: PlatformPlayData = {
   douyin: 64,
-  kuaishou: 23,
-  wechat: 9,
+  kuaishou: 15,
+  wechat: 17,
   other: 4,
 };
 

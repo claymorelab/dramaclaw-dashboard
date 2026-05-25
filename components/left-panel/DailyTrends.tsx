@@ -8,11 +8,11 @@ import DailyMinutesChart from "./DailyMinutesChart";
  */
 export default function DailyTrends() {
   return (
-    <div className="flex-1 flex flex-col gap-3 min-h-0 -mt-1">
-      {/* <div className="flex-1 min-h-[180px]">
+    <div className="flex flex-col gap-3">
+      {/* <div className="min-h-[180px]">
         <DailyEpisodesChart />
       </div> */}
-      <div className="flex-1 min-h-[150px]">
+      <div className="h-[195px]">
         <DailyMinutesChart />
       </div>
     </div>
